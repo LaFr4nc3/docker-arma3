@@ -216,17 +216,17 @@ function install ()
 
     if [ "${UID}" -eq 0 ]; then
         if [ "${VERBOSE}" = "true" ]; then
-            echo "su -s /bin/bash steam -c \"steamcmd +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit\""
-            su -s /bin/bash steam -c "steamcmd +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit"
+            echo "su -s /bin/bash steam -c \"steamcmd +set_steam_guard_code ${STEAM_GUARD_CODE} +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit\""
+            su -s /bin/bash steam -c "steamcmd +set_steam_guard_code ${STEAM_GUARD_CODE} +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit"
         else
-            su -s /bin/bash steam -c "steamcmd +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit > /dev/null"
+            su -s /bin/bash steam -c "steamcmd +set_steam_guard_code ${STEAM_GUARD_CODE} +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit > /dev/null"
         fi
     else
         if [ "${VERBOSE}" = "true" ]; then
-            echo "steamcmd +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit"
-            steamcmd +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit
+            echo "steamcmd +set_steam_guard_code ${STEAM_GUARD_CODE} +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit"
+            steamcmd +set_steam_guard_code ${STEAM_GUARD_CODE} +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit
         else
-            steamcmd +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit > /dev/null
+            steamcmd +set_steam_guard_code ${STEAM_GUARD_CODE} +login ${1} ${2} +force_install_dir ${4} +app_update ${3} validate +quit > /dev/null
         fi
     fi
 
